@@ -1,19 +1,9 @@
-artifact_path: model_explicit
-flavors:
-  python_function:
-    env:
-      conda: conda.yaml
-      virtualenv: python_env.yaml
-    loader_module: mlflow.sklearn
-    model_path: model.pkl
-    predict_fn: predict
-    python_version: 3.8.10
-  sklearn:
-    code: null
-    pickled_model: model.pkl
-    serialization_format: cloudpickle
-    sklearn_version: 1.0.2
-mlflow_version: 2.1.1
-model_uuid: 9085dbd024214f55ac6cb8463d2d1dcc
-run_id: e40d38b2a3654d49a3bc5fe16512f18b
-utc_time_created: '2023-02-23 18:37:53.722607'
+conda_env: conda.yml
+
+entry_points:
+  main:
+    command: python main.py --learning_rate {learning_rate} --n_estimators {n_estimators} --max_depth {max_depth}
+    parameters:
+      learning_rate: {type: float, default: 0.1}
+      n_estimators: {type: int, default: 100}
+      max_depth: {type: int, default: 3}
